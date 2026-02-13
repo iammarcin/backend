@@ -1,0 +1,16 @@
+summarization:
+  model: "gpt-5-mini"
+  #model: "claude-minid"
+  #model: "gemini-flash"
+  max_tokens: 4200
+  temperature: 1
+  prompt_file: "config/semantic_search/session_summary_prompt.txt"
+  max_message_characters: null
+
+backfill:
+  min_messages: 2
+  batch_size: 10
+  max_age_days: 0
+
+versioning:
+  config_version: 1

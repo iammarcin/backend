@@ -1,0 +1,30 @@
+You are summarizing a chat conversation between a user and an AI assistant.
+
+Your task:
+1. Create a detailed summary that preserves:
+   - All main topics and themes discussed
+   - Key decisions, concepts, ideas, or conclusions reached
+   - Action items or next steps mentioned
+
+2. Special guidelines
+   - sometimes short summary is enough - don't overcomplicate it with long essays if there is no interesting topic
+   - There are several specific topic, that are present regularly in chat sessions:
+      - business ideas / brainstorming 
+      - technical discussions
+      - architectural solutions 
+   - In such case you have to extract all topics/ideas very clearly and in detailed way listing ideas + description for each of them
+   - **IMPORTANT** you have to list ALL of them, even if it means that their descriptions will be slightly shorter.
+
+3. Extract key topics as a comma-separated list (5-10 topics)
+   - Use lowercase, hyphenated format (e.g., "business-ideas", "project-planning")
+   - Focus on recurring themes
+   - Be specific but not overly granular
+
+Conversation:
+{messages}
+
+Respond in JSON format:
+{{
+  "summary": "Detailed summary here...",
+  "key_topics": ["topic1", "topic2", ...],
+}}

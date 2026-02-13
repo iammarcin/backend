@@ -1,0 +1,12 @@
+# Intentionally left blank – itisai_brain package is tracked in-repo.
+itisai_brain
+.bash_history
+withings_app.json
+.cache/
+.local/
+.python_history
+#python_scripts
+.grok
+backfill_semantic_search.log
+answer.txt
+log.to.check.txt

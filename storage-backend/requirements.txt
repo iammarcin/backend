@@ -1,0 +1,43 @@
+# Core framework
+fastapi
+uvicorn[standard]
+pydantic
+pydantic[email]
+python-dotenv
+
+# AI Providers
+openai
+anthropic
+google-genai
+xai-sdk
+qdrant-client==1.16.0
+
+# AWS (versions set on purpose because build process was taking a lot)
+aioboto3==15.4.0
+aiobotocore==2.25.0
+boto3==1.40.49
+botocore==1.40.49
+
+# Database (future milestones)
+aiomysql
+sqlalchemy
+
+# Testing
+pytest
+pytest-asyncio
+pytest-cov
+testcontainers
+aiosqlite 
+
+# Utilities
+python-jose[cryptography]
+python-multipart
+websockets
+httpx
+numpy
+scipy
+pillow
+requests
+bcrypt
+garth # for garmin
+pypdfium2

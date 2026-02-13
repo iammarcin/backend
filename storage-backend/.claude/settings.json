@@ -1,0 +1,82 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '=== Git Status ===' && git status --short && echo && echo '=== Recent Commits ===' && git log --oneline -5"
+          }
+        ]
+      }
+    ],
+
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "for f in $CLAUDE_FILE_PATHS; do if [[ $f == *.py ]]; then docker exec backend ruff format \"$f\" 2>/dev/null; docker exec backend ruff check --fix \"$f\" 2>/dev/null || true; fi; done",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "for f in $CLAUDE_FILE_PATHS; do if [[ $f == src/*.py ]] || [[ $f == features/*.py ]] || [[ $f == core/*.py ]]; then docker exec backend pytest tests/ -x --tb=line -q 2>&1 | tail -30; fi; done",
+            "timeout": 120
+          }
+        ]
+      }
+    ],
+
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 .claude/scripts/security_check.py",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  },
+
+  "permissions": {
+    "allow": [
+      "Bash(pytest:*)",
+      "Bash(ruff:*)",
+      "Bash(git:*)",
+      "Bash(docker exec backend:*)",
+      "Bash(docker logs:*)",
+      "Read(src/**)",
+      "Read(tests/**)",
+      "Read(config/**)",
+      "Read(features/**)",
+      "Read(core/**)",
+      "Read(infrastructure/**)",
+      "Read(DocumentationApp/**)",
+      "Write(src/**)",
+      "Write(tests/**)",
+      "Write(features/**)",
+      "Write(core/**)",
+      "Edit(src/**)",
+      "Edit(tests/**)",
+      "Edit(features/**)",
+      "Edit(core/**)"
+    ],
+    "deny": [
+      "Write(.env*)",
+      "Edit(.env*)",
+      "Bash(rm -rf:*)",
+      "Write(migrations/versions/*)"
+    ]
+  }
+}
