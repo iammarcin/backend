@@ -19,9 +19,9 @@ Built as a personal project to explore and integrate the full spectrum of modern
 |---|---|
 | **Framework** | FastAPI, Uvicorn, Pydantic v2 |
 | **Language** | Python 3.10+ |
-| **Databases** | MySQL (4 databases), SQLAlchemy (async ORM), Qdrant (vector DB) |
+| **Databases** | Postgres (Supabase), SQLAlchemy (async ORM), Qdrant (vector DB) |
 | **AI Providers** | OpenAI, Anthropic, Google Gemini, xAI, Groq, Perplexity, DeepSeek, Deepgram, ElevenLabs, Stability AI, Flux, KlingAI |
-| **Cloud** | AWS (S3, SQS, DynamoDB) |
+| **Cloud** | AWS (S3, SQS) |
 | **Auth** | JWT (python-jose) |
 | **Streaming** | WebSockets, Server-Sent Events |
 | **Testing** | pytest, pytest-asyncio, testcontainers |
@@ -40,12 +40,11 @@ Built as a personal project to explore and integrate the full spectrum of modern
 ### Agentic & Search
 - **Agentic Workflows** — multi-iteration tool loops for browser automation, chart generation, and image/video creation
 - **Semantic Search** — vector search with Qdrant + OpenAI embeddings, hybrid/keyword/semantic modes, tag and date filtering
-- **Proactive Agent** — multi-character AI framework (Sherlock/Bugsy) with SQS-driven push notifications
+- **Proactive Agent** — multi-character AI frameworks - one using Openclaw/Claude Agent SDK as brain, another one Claude Agent SDK with SQS-driven push notifications
 
 ### Data & Integrations
 - **Garmin Health** — sleep, activity, body composition, HRV, and training readiness data aggregation
 - **Blood Tracking** — blood test result storage and analysis
-- **UFC Data** — fighter data, subscriptions, and async enrichment
 - **S3 Storage** — file upload with signed URLs
 
 ## Architecture
